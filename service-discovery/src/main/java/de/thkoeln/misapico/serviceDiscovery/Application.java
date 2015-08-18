@@ -1,4 +1,4 @@
-package de.thkoeln.mosapico.serviceDiscovery;
+package de.thkoeln.misapico.serviceDiscovery;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

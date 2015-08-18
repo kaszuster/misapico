@@ -1,6 +1,11 @@
 spring:
   application:
-    name: authentication
+    name: slave
 
 server:
-  port: 9098
+  port: 0
+
+eureka:
+  instance:
+    metadataMap:
+      instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
