@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: eureka
+
+server:
+  port: 8761
+
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+  server:
+    waitTimeInMsWhenSyncEmpty: 0
+
+#disable error log "StatusResource: Could not determine if the replica is available"
+logging:
+  level:
+    com.netflix.eureka.resources: 'OFF'
