@@ -6,11 +6,14 @@ server:
   port: 8761
 
 eureka:
+  enableSelfPreservation: false
   client:
     registerWithEureka: false
     fetchRegistry: false
   server:
     waitTimeInMsWhenSyncEmpty: 0
+  instance:
+    leaseRenewalIntervalInSeconds: 5
 
 #disable error log "StatusResource: Could not determine if the replica is available"
 logging:
