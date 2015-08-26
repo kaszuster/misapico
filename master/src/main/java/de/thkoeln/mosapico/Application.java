@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
+import org.springframework.web.client.AsyncRestTemplate;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
@@ -19,5 +20,10 @@ public class Application {
     @Bean
     RestTemplate restTemplate() {
         return new RestTemplate();
+    }
+
+    @Bean
+    AsyncRestTemplate asyncRestTemplate() {
+        return new AsyncRestTemplate();
     }
 }

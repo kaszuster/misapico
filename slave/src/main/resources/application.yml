@@ -1,11 +1,9 @@
-spring:
-  application:
-    name: slave
-
 server:
   port: 0
 
 eureka:
   instance:
+    leaseRenewalIntervalInSeconds: 5
+    leaseExpirationDurationInSeconds: 15
     metadataMap:
       instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}

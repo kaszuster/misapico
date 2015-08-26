@@ -1,6 +1,7 @@
-spring:
-  application:
-    name: master
-
 server:
   port: 9097
+
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 5
+    leaseExpirationDurationInSeconds: 15
