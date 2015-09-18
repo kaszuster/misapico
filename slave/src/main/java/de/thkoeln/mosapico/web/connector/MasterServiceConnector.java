@@ -1,8 +1,12 @@
-package de.thkoeln.mosapico.connector;
+package de.thkoeln.mosapico.web.connector;
 
+import de.thkoeln.mosapico.data.model.Chunk;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -30,7 +34,18 @@ public class MasterServiceConnector {
         return masterUri;
     }
 
-    public List<Integer> getIds() {
-        return restTemplate.getForObject(getUri() + "/ids", List.class);
+    public List<String> getIds() {
+        return restTemplate.getForObject(getUri() + "/getIdsChunkToAnalyse", List.class);
+    }
+
+    public Chunk getChunk() {
+        return restTemplate.getForObject(getUri() + "/getChunk", Chunk.class);
+    }
+
+    public void sendBuildChunk(Chunk buildChunk) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity entity = new HttpEntity(buildChunk, headers);
+        restTemplate.postForEntity(getUri() + "/addBuildChunk", entity, null);
     }
 }

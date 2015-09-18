@@ -1,15 +1,16 @@
-package de.thkoeln.mosapico.api;
+package de.thkoeln.mosapico.state;
 
 /**
  * Created by szuster on 23.08.2015.
  */
-public enum Status {
+public enum State {
     IDLE("IDLE"),
-    BUSY("BUSY");
+    ANALYSE("ANALYSE"),
+    BUILD("BUILD");
 
     private String value;
 
-    Status(String value) {
+    State(String value) {
         this.value = value;
     }
 
