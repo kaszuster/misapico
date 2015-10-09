@@ -112,7 +112,7 @@ public class BuildController {
     private void writeToBuildProcessFile(Chunk buildChunk) {
         BufferedImage process = null;
         try {
-            process = ImageIO.read(new File(writeToDir + "\\" + buildProcessFileName));
+            process = ImageIO.read(new File(writeToDir + "/" + buildProcessFileName));
         } catch (IOException e) {
             e.printStackTrace();
         }

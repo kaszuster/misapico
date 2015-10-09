@@ -17,3 +17,5 @@ spring:
       cluster-nodes: ${master.ip:127.0.0.1}:9300
       repositories:
         enabled: true
+master:
+  connect: ${master.ip:not_set}

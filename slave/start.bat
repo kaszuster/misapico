@@ -1,1 +1,1 @@
-java -jar slave-0.1.0-SNAPSHOT.jar -Dmaster.ip=192.168.178.41
+java -jar slave-0.1.0-SNAPSHOT.jar --master.ip=192.168.178.41

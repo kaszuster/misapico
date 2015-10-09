@@ -2,6 +2,7 @@ package de.thkoeln.mosapico.web.connector;
 
 import de.thkoeln.mosapico.data.model.Chunk;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.http.HttpEntity;
@@ -21,6 +22,9 @@ public class MasterServiceConnector {
     @Autowired
     private DiscoveryClient discoveryClient;
 
+    @Value("${master.connect}")
+    private String masterIp = "";
+
     private String masterUri = null;
 
     @Autowired
@@ -28,8 +32,12 @@ public class MasterServiceConnector {
 
     private String getUri() {
         if (masterUri == null) {
-            List<ServiceInstance> masters = discoveryClient.getInstances("master");
-            masterUri = masters.get(0).getUri().toString();
+            if (masterIp.contentEquals("not_set")) {
+                List<ServiceInstance> masters = discoveryClient.getInstances("master");
+                masterUri = masters.get(0).getUri().toString();
+            } else {
+                masterUri = "http://" + masterIp + ":9097";
+            }
         }
         return masterUri;
     }

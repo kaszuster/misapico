@@ -84,7 +84,7 @@ public class ImageRepositoryImpl implements ImageRepositoryCustom {
             img = findByAverageColor(r, g, b, notIds, 40);
             if (img == null) {
                 List<String> emptyList = new ArrayList<>();
-                img = findByAverageColor(r, g, b, emptyList, 50);
+                img = findByAverageColor(r, g, b, notIds, 80);
                 if (img == null) {
                     img = imageRepository.findByName("filler.jpg");
                 }
